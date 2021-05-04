@@ -24,22 +24,7 @@ CompraCarrito=[]
 
 IngresarEnfer=[]
 
-CompraCarrito.append(Carrito(54,'pandol','juan'))
 
-IngresarCitas.append(Citas('juan','nn','n','06/05/1996', '10:10','1', '1','Juan','xd'))
-
-IngresarP.append(Pacientes('Darwin','pere','06/05/1996','M', 'paciente1','123', '', '2251-5869','Paciente'))
-IngresarP.append(Pacientes('Beeen','Luna','06/05/2001','F', 'paciente2','123', '', '2251-0000','Paciente'))
-
-
-IngresarP.append(Pacientes('Santiago','perez','06/05/1996','M', 'doctor1','123', 'mimir', '2251-5869','Doctor'))
-IngresarP.append(Pacientes('Carlos','Luna','06/05/2001','F', 'doctor2','123', 'we', '2251-0000','Doctor'))
-
-IngresarP.append(Pacientes('Karla','perez','06/05/1996','M', 'e1','123', '', '2251-5869','Enfermera'))
-IngresarP.append(Pacientes('Sharon','Luna','06/05/2001','F', 'e2','123', '', '2251-0000','Enfermera'))
-
-IngresarM.append(Medicamentos('aspirt afort','1.5','no me edad el proyecto','51','aspi'))
-IngresarM.append(Medicamentos('viara xd','1.5','no me andiedad el proyecto','50','viagra'))
 
 
 
