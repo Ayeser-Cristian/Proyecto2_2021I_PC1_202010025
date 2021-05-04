@@ -7,6 +7,7 @@ from Enfermeras import Enfermeras
 from Medicamentos import Medicamentos
 from Citas import Citas
 from Carrito import Carrito
+from Enfermedades import Enfermedades
 import json
 
 IngresarP = []
@@ -21,9 +22,11 @@ IngresarCitas=[]
 
 CompraCarrito=[]
 
-CompraCarrito.append(Carrito('54','pandol','juan'))
+IngresarEnfer=[]
 
-IngresarCitas.append(Citas('juann','nn','n','06/05/1996', '10:10','1', '1','Juan','xd'))
+CompraCarrito.append(Carrito(54,'pandol','juan'))
+
+IngresarCitas.append(Citas('juan','nn','n','06/05/1996', '10:10','1', '1','Juan','xd'))
 
 IngresarP.append(Pacientes('Darwin','pere','06/05/1996','M', 'paciente1','123', '', '2251-5869','Paciente'))
 IngresarP.append(Pacientes('Beeen','Luna','06/05/2001','F', 'paciente2','123', '', '2251-0000','Paciente'))
@@ -59,6 +62,44 @@ def MostrarCompra():
     return(jsonify(Datos))
 
 
+@xd.route('/enfermedad', methods=['POST'])
+def Agregarenfermerdad():
+    global IngresarEnfer
+    v=False
+    cantidad = request.json['Cantidad']
+    nombre = request.json['Nombre']
+
+    for i in range(len(IngresarEnfer)):
+        if nombre== IngresarEnfer[i].getNombre():
+            cant= int(IngresarEnfer[i].getCantidad())
+            cant1=int(cantidad)
+            tot=cant+cant1
+            IngresarEnfer[i].setCantidad(tot)
+            v=True
+            return jsonify({'Mensaje':'Se agrego la compra'})
+            
+    
+    if v==False:
+        new=Enfermedades(cantidad,nombre)
+        IngresarEnfer.append(new)
+        return jsonify({'Mensaje':'Se agregaron los medicamentos'})
+
+
+
+@xd.route('/enfermedad', methods=['GET'])
+def Mostrarenfermerdad():
+    global CompraCarrito
+    Datos = []
+
+    for i in IngresarEnfer:
+        objeto = {
+            'Cantidad': i.getCantidad(),
+            'Nombre': i.getNombre()
+        }
+        Datos.append(objeto)    
+    return(jsonify(Datos))
+
+
 @xd.route('/Compra', methods=['POST'])
 def AgregarCompra():
     global CompraCarrito
@@ -71,7 +112,7 @@ def AgregarCompra():
             cant= int(CompraCarrito[i].getCantidad())
             cant1=int(cantidad)
             tot=cant+cant1
-            CompraCarrito[i].setCantidad(str(tot))
+            CompraCarrito[i].setCantidad(tot)
             v=True
             return jsonify({'Mensaje':'Se agrego la compra'})
             
